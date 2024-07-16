@@ -34,7 +34,7 @@ function SystemDashboard() {
 
     const fetchData = async () => {
         try {
-            // Replace with your API endpoint
+            setLoading(true);
             const response = await fetch('http://localhost:5135/System/state');
             const data = await response.json();
             setData(data);

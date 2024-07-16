@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: puck-ui-app
+  labels:
+    app: puck-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: puck-ui
+  template:
+    metadata:
+      labels:
+        app: puck-ui
+    spec:
+      containers:
+        - name: puck-ui
+          image: smehi/puck-ui:latest
+          ports:
+            - containerPort: 80
+apiVersion: v1
+kind: Service
+metadata:
+  name: puck-ui-service
+spec:
+  selector:
+    app: puck-ui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
