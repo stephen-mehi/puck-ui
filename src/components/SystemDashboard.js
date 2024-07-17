@@ -34,11 +34,11 @@ function SystemDashboard() {
 
     const fetchData = async () => {
         try {
-            //setLoading(true);
+            setLoading(true);
             const response = await fetch('http://192.168.1.12:30671/System/state');
             const data = await response.json();
             setData(data);
-            //setLoading(false);
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching data:', error);
             setLoading(false);
