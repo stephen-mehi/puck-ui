@@ -17,6 +17,7 @@ spec:
       containers:
         - name: puck-ui
           image: smehi/puck-ui:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
 apiVersion: v1
