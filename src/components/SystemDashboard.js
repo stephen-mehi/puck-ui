@@ -1,4 +1,4 @@
-import { Container, Typography, Grid, Card, CardContent, Box, CircularProgress } from '@mui/material';
+import { Button, Container, Typography, Grid, Card, CardContent, Box, CircularProgress } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import customTheme from './Theme';
 import { ThemeProvider } from '@mui/material/styles';
@@ -21,6 +21,8 @@ function SystemDashboard() {
 
     const [loading, setLoading] = useState(true);
 
+    const [respMsg, setRespMsg] = useState("");
+
     useEffect(() => {
 
         const interval = setInterval(() => {
@@ -41,7 +43,55 @@ function SystemDashboard() {
             setLoading(false);
         } catch (error) {
             console.error('Error fetching data:', error);
+            setRespMsg(error.message);
             setLoading(false);
+        }
+    };
+
+
+    const run = async () => {
+        try {
+            const response = await fetch('http://192.168.1.12:30671/System/run-status/run/default', {
+                method: 'POST', // HTTP method
+                headers: {
+                    'Content-Type': 'application/json', // Set content type if sending JSON
+                },
+                // Add body if necessary
+                // body: JSON.stringify({ key: 'value' }), // Example of request body
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok' + (await response.text()).substring(0, 250));
+            }
+
+            const result = await response.json(); // Parse JSON if response is JSON
+            console.log('Success:', result); // Handle success (e.g., show a message)
+        } catch (error) {
+            console.error('Error:', error); // Handle error (e.g., show an error message)
+            setRespMsg(error.message);
+        }
+    };
+
+    const stopRun = async () => {
+        try {
+            const response = await fetch('http://192.168.1.12:30671/System/run-status/idle', {
+                method: 'POST', // HTTP method
+                headers: {
+                    'Content-Type': 'application/json', // Set content type if sending JSON
+                },
+                // Add body if necessary
+                // body: JSON.stringify({ key: 'value' }), // Example of request body
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok' + (await response.text()).substring(0, 250));
+            }
+
+            const result = await response.json(); // Parse JSON if response is JSON
+            console.log('Success:', result); // Handle success (e.g., show a message)
+        } catch (error) {
+            console.error('Error:', error); // Handle error (e.g., show an error message)
+            setRespMsg(error.message);
         }
     };
 
@@ -90,6 +140,16 @@ function SystemDashboard() {
                                 </Typography>
                             </CardContent>
                         </Card>
+
+                        <Button onClick={run}>
+                            Run
+                        </Button>
+
+                        <Button onClick={stopRun}>
+                            Stop
+                        </Button>
+
+                        <Typography variant='body1'>{respMsg}</Typography>
                     </Grid>
                 </Grid>
             </Container>
