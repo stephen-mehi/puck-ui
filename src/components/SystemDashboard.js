@@ -48,53 +48,50 @@ function SystemDashboard() {
     return (
         <ThemeProvider theme={customTheme}>
             <Container>
-                {loading ? (
-                    <CircularProgress />
-                ) : (
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <Typography variant="h4" gutterBottom>
-                                System State
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                            <Card>
-                                <CardContent>
-                                    <Typography variant="body1" gutterBottom>
-                                        ThermoBlock: {data.thermoBlockTemperature ?? 'N/A'} °C
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        GroupHead: {data.groupHeadTemperature ?? 'N/A'} °C
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        ThermoBlock Set Point: {data.thermoBlockTemperatureSetPoint ?? 'N/A'} °C
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        GroupHead Set Point: {data.groupHeadTemperatureSetPoint ?? 'N/A'} °C
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        Pump Speed: {data.pumpSpeed ?? 'N/A'}
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        Pressure: {data.pressure ?? 'N/A'} bar
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        Run State: {data.runState ?? 'N/A'}
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        Recirculation Valve: {data.recirculationValveState ?? 'N/A'}
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        GroupHead Valve: {data.groupHeadValveState ?? 'N/A'}
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        BackFlush Valve: {data.backFlushValveState ?? 'N/A'}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
+
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Typography variant="h4" gutterBottom>
+                            System State
+                        </Typography>
                     </Grid>
-                )}
+                    <Grid item xs={12} md={6}>
+                        <Card>
+                            <CardContent>
+                                <Typography variant="body1" gutterBottom>
+                                    ThermoBlock: {data.thermoBlockTemperature ?? 'N/A'} °C
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    GroupHead: {data.groupHeadTemperature ?? 'N/A'} °C
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    ThermoBlock Set Point: {data.thermoBlockTemperatureSetPoint ?? 'N/A'} °C
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    GroupHead Set Point: {data.groupHeadTemperatureSetPoint ?? 'N/A'} °C
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    Pump Speed: {data.pumpSpeed ?? 'N/A'}
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    Pressure: {data.pressure ?? 'N/A'} bar
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    Run State: {data.runState ?? 'N/A'}
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    Recirculation Valve: {data.recirculationValveState ?? 'N/A'}
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    GroupHead Valve: {data.groupHeadValveState ?? 'N/A'}
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    BackFlush Valve: {data.backFlushValveState ?? 'N/A'}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </Grid>
             </Container>
         </ThemeProvider>
 
