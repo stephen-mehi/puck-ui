@@ -32,4 +32,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-  type: LoadBalancer
+      nodePort: 30007  # Optional: specify a node port or let Kubernetes choose one
+  type: NodePort
