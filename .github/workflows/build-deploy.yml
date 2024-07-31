@@ -28,9 +28,9 @@ jobs:
             docker build -t "smehi/$tag" .
             docker push "smehi/$tag"
   
-            $content = Get-Content -Path "C:\Windows\System32\actions-runner\_work\puck-ui\puck\puck-deploy.yaml" -Raw
+            $content = Get-Content -Path "C:\Windows\System32\actions-runner2\_work\puck-ui\puck-ui\deployment.yaml" -Raw
             $newContent = $content -replace "puck-ui:latest", $tag
-            $newContent | Set-Content -Path "C:\Windows\System32\actions-runner\_work\puck-ui\puck\puck-deploy.yaml"
+            $newContent | Set-Content -Path "C:\Windows\System32\actions-runner2\_work\puck-ui\puck-ui\deployment.yaml"
 
   deploy:
     name: kubernetes deploy
