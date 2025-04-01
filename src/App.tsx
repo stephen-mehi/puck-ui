@@ -1,13 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import SystemDashboard from './components/SystemDashboard';
-import customTheme from './components/Theme';
+import customTheme from './components/Theme'
+import './App.css'
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { ThemeProvider } from '@mui/material/styles'
+import { Container, AppBar, Toolbar, Typography, Button } from '@mui/material'
+import SystemDashboard from './components/SystemDashboard'
 import Recipes from './components/Recipes';
-import { Container, AppBar, Toolbar, Typography, Button } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-
 
 function App() {
+
   return (
     <ThemeProvider theme={customTheme}>
       <Router>
@@ -28,8 +28,7 @@ function App() {
         </Container>
       </Router>
     </ThemeProvider>
-
-  );
+  )
 }
 
-export default App;
+export default App
