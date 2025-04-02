@@ -21,7 +21,7 @@ function SystemDashboard() {
 
     const [loading, setLoading] = useState(true);
 
-    const [respMsg, setRespMsg] = useState("");
+    const [error, setError] = useState("");
 
     useEffect(() => {
 
@@ -45,12 +45,13 @@ function SystemDashboard() {
             console.error('Error fetching data:', error);
 
             if (error instanceof Error) {
-                setRespMsg(error.message);
+                setError(error.message);
             }
             else {
-                setRespMsg('Error fetching data, unknown error type');
+                setError('Error fetching data, unknown error type');
             }
 
+        } finally {
             setLoading(false);
         }
     };
@@ -77,11 +78,13 @@ function SystemDashboard() {
             console.error('Error:', error);
 
             if (error instanceof Error) {
-                setRespMsg(error.message);
+                setError(error.message);
             }
             else {
-                setRespMsg('Error, unknown error type');
+                setError('Error, unknown error type');
             }
+        }finally {
+            setLoading(false);
         }
     };
 
@@ -106,11 +109,13 @@ function SystemDashboard() {
             console.error('Error:', error);
 
             if (error instanceof Error) {
-                setRespMsg(error.message);
+                setError(error.message);
             }
             else {
-                setRespMsg('Error, unknown error type');
+                setError('Error, unknown error type');
             }
+        }finally {
+            setLoading(false);
         }
     };
 
@@ -168,7 +173,7 @@ function SystemDashboard() {
                             Stop
                         </Button>
 
-                        <Typography variant='body1'>{respMsg}</Typography>
+                        <Typography variant='body1'>{error}</Typography>
                     </Grid>
                 </Grid>
             </Container>
