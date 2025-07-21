@@ -18,6 +18,10 @@ const customTheme = createTheme({
         default: '#263238', // Dark blue-gray background color
         paper: '#37474F', // Dark gray surface color
       },
+      action: {
+        disabled: '#cccccc', // Light gray for disabled text/icons
+        disabledBackground: '#555555', // Medium gray for disabled backgrounds
+      },
     },
     typography: {
       fontFamily: '"Courier New", Courier, monospace', // Terminal-like font

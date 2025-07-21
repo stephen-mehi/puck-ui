@@ -20,12 +20,10 @@ function App() {
             <Button color="inherit" component={Link} to="/recipes">Recipes</Button>
           </Toolbar>
         </AppBar>
-        <Container>
-          <Routes>
-            <Route path="/" element={<SystemDashboard />} />
-            <Route path="/recipes" element={<Recipes />} />
-          </Routes>
-        </Container>
+        <Routes>
+          <Route path="/" element={<SystemDashboard />} />
+          <Route path="/recipes" element={<Recipes />} />
+        </Routes>
       </Router>
     </ThemeProvider>
   )
